@@ -4,13 +4,13 @@ let squarePositionX = 10;
 let squarePositionY = 50;
 let t;
 let speedInput = document.getElementById("speed");
-let speed = 1;
+let speed = 0.5;
 
 window.onload = function () {
   canvas = document.getElementById("drawingCanvas");
   context = canvas.getContext("2d");
-  t = setTimeout(drawFrame, 20);
-  stop();
+  speedInput.value = speed;
+  t = setTimeout(drawFrame.bind(this, false), 20);
 };
 
 function drawFrame(toLeft) {
@@ -50,7 +50,7 @@ function stop() {
 
 function goRight() {
   stop();
-  t = setTimeout(drawFrame, 20);
+  t = setTimeout(drawFrame.bind(this, false), 20);
 }
 function goLeft() {
   stop();
